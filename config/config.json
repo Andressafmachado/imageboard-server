@@ -1,0 +1,21 @@
+{
+  "development": {
+    "url": "postgres://rokxtfrm:adzH48PC_SV0B2Y101nuy-XM2XTAmSE3@hattie.db.elephantsql.com:5432/rokxtfrm",
+    "dialect": "postgres",
+    "operatorsAliases": "0"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
