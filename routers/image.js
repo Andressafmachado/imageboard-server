@@ -1,19 +1,38 @@
 const express = require("express");
 const Image = require("../models").image;
-const { Router } = express;
-
+const { Router } = require("express");
+const { toData } = require("../auth/jwt");
 const router = new Router();
 
-// SEE ALL IMAGES
-// router.get("/", async (request, response, next) => {
-//   try {
-//     console.log("Im getting all images");
-//     const images = await Image.findAll();
-//     response.send(images);
-//   } catch (e) {
-//     next(e);
+// http :4000/images/auth/messy Authorization:"Bearer jwthere"
+// router.get("/", async (req, res, next) => {
+//   const auth =
+//     req.headers.authorization && req.headers.authorization.split(" ");
+//   if (auth && auth[0] === "Bearer" && auth[1]) {
+//     try {
+//       const data = toData(auth[1]);
+//     } catch (e) {
+//       res.status(400).send("Invalid JWT token");
+//     }
+//     const allImages = await Image.findAll();
+//     res.json(allImages);
+//   } else {
+//     res.status(401).send({
+//       message: "Please supply some valid credentials",
+//     });
 //   }
 // });
+
+// SEE ALL IMAGES
+router.get("/", async (request, response, next) => {
+  try {
+    console.log("Im getting all images");
+    const images = await Image.findAll();
+    response.send(images);
+  } catch (e) {
+    next(e);
+  }
+});
 
 //PAGINATION
 //http :4000/images offset==0 limit==2
